@@ -7,6 +7,9 @@ const app = express()
 app.use(express.json()) 
 app.use(express.urlencoded({extended: false}))
 
+const conn = require('./db/conn')
+conn()
+
 // Criando rota
 app.get('/', function (req, res) {
     res.json({msg: 'Rota principal'}) // Rota Principal
