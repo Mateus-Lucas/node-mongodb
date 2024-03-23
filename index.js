@@ -10,6 +10,9 @@ app.use(express.urlencoded({extended: false}))
 const conn = require('./db/conn')
 conn()
 
+const routes = require('./routes/routes')
+app.use('/', routes)
+
 // Criando rota
 app.get('/', function (req, res) {
     res.json({msg: 'Rota principal'}) // Rota Principal
