@@ -4,7 +4,18 @@ const Produto = require("../models/Produtos")
 const ProdutoController = {
 
     getAll: async (req, res) => {
-        res.json(await Produto.find({tipo: { $regex: new RegExp('be', 'i')}}))
+
+        const campos = Object.keys(Produto.schema.paths)
+
+        const filtros = {}
+
+        for (let campo in req.query) {
+            if (campos.includes(campo)) {
+                filtros[campo] = { $regex: new RegExp(req.query[campo], 'i') }
+            }
+        }
+        res.json(await Produto.find(filtros))
+
     },
 
     get: async (req, res) => {
