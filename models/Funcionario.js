@@ -36,8 +36,9 @@ const schema = new mongoose.Schema({
         }
     },
     cargo: {
-        type: String,
-        required: true
+        nome: {
+            type: String
+        }
     }
 }, { timestamps: true });
 
