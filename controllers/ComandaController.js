@@ -1,10 +1,21 @@
-const {json} = require("express")
-const Comanda = require("../models/Comanda")
+const { json } = require("express")
+const Comanda = require('../models/Comanda')
 
 const ComandaController = {
 
     getAll: async (req, res) => {
-        res.json(await Comanda.find())
+
+        const campos = Object.keys(Comanda.schema.paths)
+
+        const filtros = {}
+
+        for (let campo in req.query) {
+            if (campos.includes(campo)) {
+                filtros[campo] = { regex: new RegExp(req.query[campo], 'i') }
+            }
+        }
+        res.json(await Comanda.find(filtros))
+
     },
 
     get: async (req, res) => {

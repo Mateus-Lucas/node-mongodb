@@ -1,12 +1,23 @@
+const mongoose = require('mongoose');
 
-const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
-const schema = mongoose.Schema({
-    nome: String,
-    valor: Number
-})
+const comandaSchema = new Schema({
+    mesa: {
+        type: String,
+        required: true,
+        maxlength: 45
+    },
+    dataPagamento: {
+        type: Date,
+        default: null
+    },
+    data: {
+        type: Date,
+        default: Date.now
+    }
+});
 
-const Comanda = mongoose.model('Comanda', schema)
+const Comanda = mongoose.model('Comanda', comandaSchema);
 
-module.exports = Comanda
-
+module.exports = Comanda;

@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
         unique: true,
         validate: {
             validator: function (v) {
-                return /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(v); // Verifica se o CPF está no formato XXX.XXX.XXX-XX
+                return /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(v); 
             },
             message: props => `${props.value} não é um CPF válido!`
         }
@@ -24,13 +24,13 @@ const schema = new mongoose.Schema({
     },
     sexo: {
         type: String,
-        enum: ['Masculino', 'Feminino', 'Outro'] // Define um conjunto de valores possíveis para o sexo
+        enum: ['Masculino', 'Feminino', 'Outro'] 
     },
     telefone: {
         type: String,
         validate: {
             validator: function (v) {
-                return /^\(\d{2}\) \d{4,5}\-\d{4}$/.test(v); // Verifica se o telefone está no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX
+                return /^\(\d{2}\) \d{4,5}\-\d{4}$/.test(v); 
             },
             message: props => `${props.value} não é um número de telefone válido!`
         }
