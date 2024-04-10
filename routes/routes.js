@@ -3,6 +3,7 @@ const express = require('express');
 const ProdutoController = require('../controllers/ProdutoController');
 const ComandaController = require('../controllers/ComandaController');
 const FuncionarioController = require('../controllers/FuncionarioController');
+const ClienteController = require('../controllers/ClienteController');
 const router = express.Router();
 
 // req: requisição
@@ -30,6 +31,12 @@ router.post('/funcionario', (req, res) => FuncionarioController.create(req, res)
 router.get('/funcionario/:id', (req, res) => FuncionarioController.get(req, res))
 router.delete('/funcionario/:id', (req, res) => FuncionarioController.delete(req, res))
 router.put('/funcionario/:id', (req, res) => FuncionarioController.update(req, res))
+
+router.get('/cliente', (req, res) => ClienteController.getAll(req, res))
+router.post('/cliente', (req, res) => ClienteController.create(req, res))
+router.get('/cliente/:id', (req, res) => ClienteController.get(req, res))
+router.delete('/cliente/:id', (req, res) => ClienteController.delete(req, res))
+router.put('/cliente/:id', (req, res) => ClienteController.update(req, res))
 
 
 
